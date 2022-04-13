@@ -44,4 +44,31 @@ Function CreateVM{
         [Parameter(Mandatory=$true)]
         [string]$MSInternalAzureSubScription
     )
+
+    'Connect to your Azure-Account...'
+
+    'Set MS Internal Consumption SubscriptionID...'
+    $MSInternalAzureSubScription=$MSInternalAzureSubScription
+
+    ' Set PowerShell context to Internal Consumption...'
+    Select-AzSubscription -SubscriptionName $MSInternalAzureSubScription
+
+    'Create new ResourceGroup...'
+    New-AZResourceGroup -Name $ResourceGroupName -Location $LocationName
+
+    'Create new Azure Virtual Network and network security Group to allow HTTPS/SMTP/RDP...'
+    'Setting Resource Group rules..'
+    $rule1 = New-AZNetworkSecurityRuleConfig -Name "RDPTraffic" -Description "Allow RDP to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+    $rule2 = New-AZNetworkSecurityRuleConfig -Name "ExchangeSecureWebTraffic" -Description "Allow HTTPS to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 443
+    $rule3 = New-AZNetworkSecurityRuleConfig -Name "ExchangeSMTPTraffic" -Description " Allow SMTP to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 102 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 25
+
+    'Apply rules...'
+    New-AZNetworkSecurityGroup -Name EXSrvrSubnetNSG -ResourceGroupName $ResourceGroupName -Location $LocationName -SecurityRules $rule1, $rule2,$rule3
+    $nsg=Get-AZNetworkSecurityGroup -Name EXSrvrSubnetNSG -ResourceGroupName $ResourceGroupName
+    Add-AZVirtualNetworkSubnetConfig -Name default -AddressPrefix 10.0.0.0/24 -VirtualNetwork $virtualNetwork -NetworkSecurityGroup $nsg
+
+    $virtualNetwork | Set-AZVirtualNetwork
+
+    '**** Finished Successfull - Resource Group Created ****'
+    
 }
