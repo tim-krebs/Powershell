@@ -1,5 +1,5 @@
 <#
-Copyright (c) 2021 Jan Schaffranek. All rights reserved.
+Copyright (c) 2022 Tim Krebs. All rights reserved.
 
 MIT License
 
@@ -32,6 +32,9 @@ $desktop = Get-CimInstance -ClassName Win32_Desktop
 
 # Retrieve BIOS Information 
 $bios = Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object -Property SystemType
+
+# Gahter processor details
+$processor = Get-CimINstance -ClassName Win32_Processor 
 
 # Get Computer Manufacturer Details 
 $manufacturer = Get-CimInstance -ClassName Win32_ComputerSystem
