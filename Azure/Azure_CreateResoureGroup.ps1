@@ -23,13 +23,13 @@ SOFTWARE.
 
 # ***** PowerShell Script to create your Resource Group and Virtual Network with Azure PowerShell *****
 
-Function CreateVM{
+function CreateResourceGroup{
     <#
     .SYNOPSIS
     .DESCRIPTION
     .PARAMETER Name
     .EXAMPLE
-    Gather-Info -ResourceGroupName <YourLabName> -ResourceGroupVnetName <VirtualNetwork> -LocationName <EastUS> -MSInternalAzureSubScription <d06dcc55-07b2-4b7f-9e73-830e50422235>
+    CreateVM -ResourceGroupName <YourLabName> -ResourceGroupVnetName <VirtualNetwork> -LocationName <EastUS> -MSInternalAzureSubScription <d06dcc55-07b2-4b7f-9e73-830e50422235>
     #>
     param( 
         [Parameter(Mandatory=$true)]
@@ -46,6 +46,7 @@ Function CreateVM{
     )
 
     'Connect to your Azure-Account...'
+    Connect-AzAccount 
 
     'Set MS Internal Consumption SubscriptionID...'
     $MSInternalAzureSubScription=$MSInternalAzureSubScription
@@ -58,6 +59,44 @@ Function CreateVM{
 
     'Create new Azure Virtual Network and network security Group to allow HTTPS/SMTP/RDP...'
     'Setting Resource Group rules..'
+    function CreateVM{
+    <#
+    .SYNOPSIS
+    .DESCRIPTION
+    .PARAMETER Name
+    .EXAMPLE
+    CreateVM -ResourceGroupName <YourLabName> -ResourceGroupVnetName <YourResourceGroupNameHere> -LocationName <EastUS> -MSInternalAzureSubScription <d06dcc55-07b2-4b7f-9e73-830e50422235YourSubscrpHere>
+    #>
+    param( 
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupName,
+
+        [Parameter(Mandatory=$true)]
+        [string]$ResourceGroupVnetName,
+
+        [Parameter(Mandatory=$true)]
+        [string]$LocationName,
+
+        [Parameter(Mandatory=$true)]
+        [string]$MSInternalAzureSubScription
+    )
+
+    'Connect to your Azure-Account...'
+    Connect-AzAccount
+
+    'Set MS Internal Consumption SubscriptionID...'
+    $MSInternalAzureSubScription=$MSInternalAzureSubScription
+
+    ' Set PowerShell context to Internal Consumption...'
+    Select-AzSubscription -SubscriptionName $MSInternalAzureSubScription
+
+    'Create new ResourceGroup...'
+    New-AZResourceGroup -Name $ResourceGroupName -Location $LocationName
+
+    'Create new Azure Virtual Network and network security Group to allow HTTPS/SMTP/RDP...'
+    'Setting Resource Group rules..'
+    $virtualNetwork = New-AZVirtualNetwork -ResourceGroupName $ResourceGroupName  -Location $LocationName  -Name $ResourceGroupVnetName -AddressPrefix 10.0.0.0/24
+
     $rule1 = New-AZNetworkSecurityRuleConfig -Name "RDPTraffic" -Description "Allow RDP to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
     $rule2 = New-AZNetworkSecurityRuleConfig -Name "ExchangeSecureWebTraffic" -Description "Allow HTTPS to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 443
     $rule3 = New-AZNetworkSecurityRuleConfig -Name "ExchangeSMTPTraffic" -Description " Allow SMTP to all VMs on the subnet" -Access Allow -Protocol Tcp -Direction Inbound -Priority 102 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 25
@@ -69,6 +108,6 @@ Function CreateVM{
 
     $virtualNetwork | Set-AZVirtualNetwork
 
-    '**** Finished Successfull - Resource Group Created ****'
+    '**** Finished - Resource Group Created ****'
     
 }
