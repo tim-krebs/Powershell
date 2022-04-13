@@ -1,5 +1,5 @@
 <#
-Copyright (c) 2021 Jan Schaffranek. All rights reserved.
+Copyright (c) 2022 Tim Krebs. All rights reserved.
 
 MIT License
 
