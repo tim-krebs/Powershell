@@ -6,9 +6,14 @@ It includes a command-line shell, an associated scripting language and a framewo
 
 ## New to PowerShell?
 
-If you are new to PowerShell and would like to learn more, we recommend reviewing the [getting started][] documentation.
+Whether you're a Developer, a DevOps or an IT Professional, this doc will help you getting started with PowerShell.
+In this document we'll cover the following:
+installing PowerShell, samples walkthrough, PowerShell editor, debugger, testing tools and a map book for experienced bash users to get started with PowerShell faster.
 
-[getting started]: https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell
+The exercises in this document are intended to give you a solid foundation in how to use PowerShell.
+You won't be a PowerShell guru at the end of reading this material but you will be well on your way with the right set of knowledge to start using PowerShell.
+
+If you have 30 minutes now, let’s try it.
 
 ## Get PowerShell
 
@@ -121,3 +126,60 @@ You can also download the PowerShell binary archives for Windows, macOS and Linu
 [corefx-macos]:https://github.com/dotnet/core/blob/master/release-notes/3.0/3.0-supported-os.md#macos
 
 To install a specific version, visit [releases](https://github.com/PowerShell/PowerShell/releases).
+
+## Getting Started with PowerShell
+
+PowerShell commands follow a Verb-Noun semantic with a set of parameters.
+It's easy to learn and use PowerShell.
+For example, `Get-Process` will display all the running processes on your system.
+Let's walk through with a few examples from the [PowerShell Beginner's Guide](powershell-beginners-guide.md).
+
+Now you have learned the basics of PowerShell.
+Please continue reading if you want to do some development work in PowerShell.
+
+### PowerShell Editor
+
+In this section, you will create a PowerShell script using a text editor.
+You can use your favorite editor to write scripts.
+We use Visual Studio Code (VS Code) which works on Windows, Linux, and macOS.
+Click on the following link to create your first PowerShell script.
+
+- [Using Visual Studio Code (VS Code)](https://docs.microsoft.com/powershell/scripting/dev-cross-plat/vscode/using-vscode)
+
+
+### Recommended Training and Reading
+
+- Microsoft Virtual Academy: [Getting Started with PowerShell][getstarted-with-powershell]
+- [Why Learn PowerShell][why-learn-powershell] by Ed Wilson
+- PowerShell Web Docs: [Basic cookbooks][basic-cookbooks]
+- [The Guide to Learning PowerShell][ebook-from-Idera] by Tobias Weltner
+- [PowerShell-related Videos][channel9-learn-powershell] on Channel 9
+- [PowerShell Quick Reference Guides][quick-reference] by PowerShellMagazine.com
+- [Learn PowerShell Video Library][idera-learn-powershell] from Idera
+- [PowerShell 5 How-To Videos][script-guy-how-to] by Ed Wilson
+- [PowerShell Documentation](https://docs.microsoft.com/powershell)
+- [Interactive learning with PSKoans](https://aka.ms/pskoans)
+
+### Commercial Resources
+
+- [Windows PowerShell in Action][in-action] by [Bruce Payette](https://github.com/brucepay)
+- [Introduction to PowerShell][powershell-intro] from Pluralsight
+- [PowerShell Training and Tutorials][lynda-training] from Lynda.com
+- [Learn Windows PowerShell in a Month of Lunches][learn-win-powershell] by Don Jones and Jeffrey Hicks
+- [Learn PowerShell in a Month of Lunches][learn-powershell] by Travis Plunk (@TravisEz13),
+  Tyler Leonhardt (@tylerleonhardt), Don Jones, and Jeffery Hicks
+
+[in-action]: https://www.amazon.com/Windows-PowerShell-Action-Second-Payette/dp/1935182137
+[powershell-intro]: https://www.pluralsight.com/courses/powershell-intro
+[lynda-training]: https://www.lynda.com/PowerShell-training-tutorials/5779-0.html
+[learn-win-powershell]: https://www.amazon.com/Learn-Windows-PowerShell-Month-Lunches/dp/1617294160
+[learn-powershell]: https://www.manning.com/books/learn-powershell-in-a-month-of-lunches
+
+[getstarted-with-powershell]: https://channel9.msdn.com/Series/GetStartedPowerShell3
+[why-learn-powershell]: https://blogs.technet.microsoft.com/heyscriptingguy/2014/10/18/weekend-scripter-why-learn-powershell/
+[ebook-from-Idera]:https://www.idera.com/resourcecentral/whitepapers/powershell-ebook
+[channel9-learn-powershell]: https://channel9.msdn.com/Search?term=powershell#ch9Search
+[idera-learn-powershell]: https://community.idera.com/database-tools/powershell/video_library/
+[quick-reference]: https://www.powershellmagazine.com/2014/04/24/windows-powershell-4-0-and-other-quick-reference-guides/
+[script-guy-how-to]:https://blogs.technet.microsoft.com/tommypatterson/2015/09/04/ed-wilsons-powershell5-videos-now-on-channel9-2/
+[basic-cookbooks]:https://docs.microsoft.com/powershell/scripting/samples/sample-scripts-for-administration
