@@ -29,42 +29,6 @@ function CreateResourceGroup{
     .DESCRIPTION
     .PARAMETER Name
     .EXAMPLE
-    CreateVM -ResourceGroupName <YourLabName> -ResourceGroupVnetName <VirtualNetwork> -LocationName <EastUS> -MSInternalAzureSubScription <d06dcc55-07b2-4b7f-9e73-830e50422235>
-    #>
-    param( 
-        [Parameter(Mandatory=$true)]
-        [string]$ResourceGroupName
-
-        [Parameter(Mandatory=$true)]
-        [string]$ResourceGroupVnetName
-
-        [Parameter(Mandatory=$true)]
-        [string]$LocationName
-
-        [Parameter(Mandatory=$true)]
-        [string]$MSInternalAzureSubScription
-    )
-
-    'Connect to your Azure-Account...'
-    Connect-AzAccount 
-
-    'Set MS Internal Consumption SubscriptionID...'
-    $MSInternalAzureSubScription=$MSInternalAzureSubScription
-
-    ' Set PowerShell context to Internal Consumption...'
-    Select-AzSubscription -SubscriptionName $MSInternalAzureSubScription
-
-    'Create new ResourceGroup...'
-    New-AZResourceGroup -Name $ResourceGroupName -Location $LocationName
-
-    'Create new Azure Virtual Network and network security Group to allow HTTPS/SMTP/RDP...'
-    'Setting Resource Group rules..'
-    function CreateVM{
-    <#
-    .SYNOPSIS
-    .DESCRIPTION
-    .PARAMETER Name
-    .EXAMPLE
     CreateVM -ResourceGroupName <YourLabName> -ResourceGroupVnetName <YourResourceGroupNameHere> -LocationName <EastUS> -MSInternalAzureSubScription <d06dcc55-07b2-4b7f-9e73-830e50422235YourSubscrpHere>
     #>
     param( 
