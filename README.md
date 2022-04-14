@@ -4,17 +4,6 @@ PowerShell Core is a cross-platform (Windows, Linux, and macOS) automation and c
 for dealing with structured data (e.g. JSON, CSV, XML, etc.), REST APIs, and object models.
 It includes a command-line shell, an associated scripting language and a framework for processing cmdlets.
 
-## New to PowerShell?
-
-Whether you're a Developer, a DevOps or an IT Professional, this doc will help you getting started with PowerShell.
-In this document we'll cover the following:
-installing PowerShell, samples walkthrough, PowerShell editor, debugger, testing tools and a map book for experienced bash users to get started with PowerShell faster.
-
-The exercises in this document are intended to give you a solid foundation in how to use PowerShell.
-You won't be a PowerShell guru at the end of reading this material but you will be well on your way with the right set of knowledge to start using PowerShell.
-
-If you have 30 minutes now, let’s try it.
-
 ## Get PowerShell
 
 You can download and install a PowerShell package for any of the following platforms.
@@ -129,13 +118,10 @@ To install a specific version, visit [releases](https://github.com/PowerShell/Po
 
 ## Getting Started with PowerShell
 
-PowerShell commands follow a Verb-Noun semantic with a set of parameters.
-It's easy to learn and use PowerShell.
-For example, `Get-Process` will display all the running processes on your system.
-Let's walk through with a few examples from the [PowerShell Beginner's Guide](powershell-beginners-guide.md).
+If you are new to PowerShell and would like to learn more, we recommend reviewing the [getting started][] documentation.
 
+[getting started]: https://github.com/tim-krebs/Powershell/tree/main/docs/learning-powershell
 Now you have learned the basics of PowerShell.
-Please continue reading if you want to do some development work in PowerShell.
 
 ### PowerShell Editor
 
