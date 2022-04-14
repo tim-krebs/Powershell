@@ -86,7 +86,7 @@ function CreateVM{
     'Creating Exchange VM...'
     $vmEXName="AZ-EX-2019-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName." 
+    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account. User name: labadmin, Password: LS1Setup! $vmEXName." 
     labadmin
     LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
@@ -110,7 +110,7 @@ function CreateVM{
     'Creating Client VM...'
     $vmName="AZ-Client-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM." 
+    $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM. User name: labadmin, Password: LS1Setup!." 
     labadmin
     LS1Setup!
 
@@ -135,7 +135,7 @@ function CreateVM{
     #Provision The Client Virtual Machine - Tested Good
     $vmName="AZ-Client-02" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM." 
+    $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM. User name: labadmin, Password: LS1Setup!" 
     labadmin
     LS1Setup!
 
@@ -159,7 +159,7 @@ function CreateVM{
     #Provision The Client Virtual Machine - Tested Good- Windows 11
     $vmName="AZ-Client-03" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM." 
+    $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM. User name: labadmin, Password: LS1Setup!" 
     labadmin
     LS1Setup!
 
@@ -184,7 +184,7 @@ function CreateVM{
     #Exchange EDGE 2019
     $vmEXName="AZ-EDGE-2019-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName." 
+    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
     labadmin
     LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
@@ -208,7 +208,7 @@ function CreateVM{
     #Exchange EDGE 2019
     $vmEXName="AZ-EDGE-2019-02" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName." 
+    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
     labadmin
     LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
@@ -232,7 +232,7 @@ function CreateVM{
     $vmEXName="AZ-AIP-01" 
     $MemberVirtualMachineSKU = "Standard_B2s"
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName." 
+    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
     labadmin
     LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
@@ -256,7 +256,7 @@ function CreateVM{
     $vmEXName="AZ-AIP-02" 
     $MemberVirtualMachineSKU = "Standard_B2s"
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
-    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName." 
+    $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
     labadmin
     LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
