@@ -62,7 +62,6 @@ function CreateVM{
     $locationName = (Get-AZResourceGroup -Name $ResourceGroupName).Location
     $DCcred=Get-Credential -Message "Type the name and password of the local administrator account. User name: labadmin, Password: LS1Setup! $vmDCName."
 
-    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName
 
     $nicDCName=$vmDCName + "-NIC"
@@ -77,6 +76,8 @@ function CreateVM{
     $vmDCConfig=Set-AZVMOperatingSystem -VM $vmDCConfig -Windows -ComputerName $vmDCName -Credential $DCcred -ProvisionVMAgent -EnableAutoUpdate
     $vmDCConfig=Set-AZVMSourceImage -VM $vmDCConfig -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version "latest"
     $vmDCConfig=Add-AZVMNetworkInterface -VM $vmDCConfig -Id $DCnic.Id
+
+    Set-AzVMBootDiagnostic -VM $vmDCConfig -Disable 
 
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vmDCConfig
     '**** Finished - Domain Controller Created ****'
@@ -103,9 +104,10 @@ function CreateVM{
     $vmExConfig=Set-AZVMSourceImage -VM $vmExConfig -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version "latest" 
     $vmExConfig=Add-AZVMNetworkInterface -VM $vmExConfig -Id $EXnic.Id 
 
+    Set-AzVMBootDiagnostic -VM $vmExConfig -Disable 
+
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vmExConfig
     '**** Finished - Exchange VM Created ****'
-
 
     #Provision The Client Virtual Machine - Tested Good
     'Creating Client VM...'
@@ -124,6 +126,8 @@ function CreateVM{
     $vm=Set-AZVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate 
     $vm=Set-AZVMSourceImage -VM $vm -PublisherName MicrosoftWindowsDesktop -Offer Windows-10 -Skus 21H1-pro  -Version "latest" 
     $vm=Add-AZVMNetworkInterface -VM $vm -Id $nic.Id 
+
+    Set-AzVMBootDiagnostic -VM $vm -Disable
 
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vm
 
@@ -146,6 +150,8 @@ function CreateVM{
     $vm=Set-AZVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate 
     $vm=Set-AZVMSourceImage -VM $vm -PublisherName MicrosoftWindowsDesktop -Offer Windows-10 -Skus 21H1-pro  -Version "latest" 
     $vm=Add-AZVMNetworkInterface -VM $vm -Id $nic.Id 
+
+    Set-AzVMBootDiagnostic -VM $vm -Disable
     
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vm 
     '**** Finished - Client-02 VM Created ****'
@@ -167,6 +173,8 @@ function CreateVM{
     $vm=Set-AZVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate 
     $vm=Set-AZVMSourceImage -VM $vm -PublisherName MicrosoftWindowsDesktop -Offer Windows-11 -Skus win11-21h2-pro  -Version "latest" 
     $vm=Add-AZVMNetworkInterface -VM $vm -Id $nic.Id 
+
+    Set-AzVMBootDiagnostic -VM $vm -Disable
     
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vm 
     '**** Finished - Client-03 VM Created ****'
@@ -190,6 +198,8 @@ function CreateVM{
     $vmExConfig=Set-AZVMSourceImage -VM $vmExConfig -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version "latest" 
     $vmExConfig=Add-AZVMNetworkInterface -VM $vmExConfig -Id $EXnic.Id 
 
+    Set-AzVMBootDiagnostic -VM $vmExConfig -Disable
+
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vmExConfig 
     '**** Finished - Echange-Edge-01 VM Created ****'
 
@@ -211,6 +221,8 @@ function CreateVM{
     $vmExConfig=Set-AZVMOperatingSystem -VM $vmExConfig -Windows -ComputerName $vmEXName -Credential $EXcred -ProvisionVMAgent -EnableAutoUpdate 
     $vmExConfig=Set-AZVMSourceImage -VM $vmExConfig -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version "latest" 
     $vmExConfig=Add-AZVMNetworkInterface -VM $vmExConfig -Id $EXnic.Id 
+
+    Set-AzVMBootDiagnostic -VM $vmExConfig -Disable
 
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vmExConfig 
     '**** Finished - Echange-Edge-02 VM Created ****'
@@ -234,6 +246,8 @@ function CreateVM{
     $vmExConfig=Set-AZVMSourceImage -VM $vmExConfig -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version "latest" 
     $vmExConfig=Add-AZVMNetworkInterface -VM $vmExConfig -Id $EXnic.Id 
 
+    Set-AzVMBootDiagnostic -VM $vmExConfig -Disable
+
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vmExConfig 
     '**** Finished - Exchange-Azure-RMS-Conector-01 Created ****'
 
@@ -255,6 +269,8 @@ function CreateVM{
     $vmExConfig=Set-AZVMOperatingSystem -VM $vmExConfig -Windows -ComputerName $vmEXName -Credential $EXcred -ProvisionVMAgent -EnableAutoUpdate 
     $vmExConfig=Set-AZVMSourceImage -VM $vmExConfig -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version "latest" 
     $vmExConfig=Add-AZVMNetworkInterface -VM $vmExConfig -Id $EXnic.Id 
+
+    Set-AzVMBootDiagnostic -VM $vmExConfig -Disable
 
     New-AZVM -ResourceGroupName $ResourceGroupName -Location $locationName -VM $vmExConfig 
     '**** Finished - Exchange-Azure-RMS-Conector-02 Created ****'
