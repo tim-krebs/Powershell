@@ -62,6 +62,7 @@ function CreateVM{
     $locationName = (Get-AZResourceGroup -Name $ResourceGroupName).Location
     $DCcred=Get-Credential -Message "Type the name and password of the local administrator account. User name: labadmin, Password: LS1Setup! $vmDCName."
 
+    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName
 
     $nicDCName=$vmDCName + "-NIC"
@@ -87,6 +88,8 @@ function CreateVM{
     $vmEXName="AZ-EX-2019-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $EXcred=Get-Credential -Message "Type the name and password of the local administrator account. User name: labadmin, Password: LS1Setup! $vmEXName." 
+
+    Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicEXName=$vmEXName + "-NIC" 
