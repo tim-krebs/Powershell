@@ -87,8 +87,6 @@ function CreateVM{
     $vmEXName="AZ-EX-2019-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $EXcred=Get-Credential -Message "Type the name and password of the local administrator account. User name: labadmin, Password: LS1Setup! $vmEXName." 
-    labadmin
-    LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicEXName=$vmEXName + "-NIC" 
@@ -111,9 +109,6 @@ function CreateVM{
     $vmName="AZ-Client-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM. User name: labadmin, Password: LS1Setup!." 
-    labadmin
-    LS1Setup!
-
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicName=$vmName + "-NIC" 
@@ -136,9 +131,6 @@ function CreateVM{
     $vmName="AZ-Client-02" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM. User name: labadmin, Password: LS1Setup!" 
-    labadmin
-    LS1Setup!
-
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicName=$vmName + "-NIC" 
@@ -160,9 +152,6 @@ function CreateVM{
     $vmName="AZ-Client-03" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $cred=Get-Credential -Message "Type the name and password of the local administrator account for exVM. User name: labadmin, Password: LS1Setup!" 
-    labadmin
-    LS1Setup!
-
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicName=$vmName + "-NIC" 
@@ -185,8 +174,6 @@ function CreateVM{
     $vmEXName="AZ-EDGE-2019-01" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
-    labadmin
-    LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicEXName=$vmEXName + "-NIC" 
@@ -209,8 +196,6 @@ function CreateVM{
     $vmEXName="AZ-EDGE-2019-02" 
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
-    labadmin
-    LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicEXName=$vmEXName + "-NIC" 
@@ -233,8 +218,6 @@ function CreateVM{
     $MemberVirtualMachineSKU = "Standard_B2s"
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
-    labadmin
-    LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicEXName=$vmEXName + "-NIC" 
@@ -257,8 +240,6 @@ function CreateVM{
     $MemberVirtualMachineSKU = "Standard_B2s"
     $locationName=(Get-AZResourceGroup -Name $ResourceGroupName).Location 
     $EXcred=Get-Credential -Message "Type the name and password of the local administrator account for $vmEXName. User name: labadmin, Password: LS1Setup!" 
-    labadmin
-    LS1Setup!
     $vnet=Get-AZVirtualNetwork -Name $ResourceGroupVnetName -ResourceGroupName $ResourceGroupName 
 
     $nicEXName=$vmEXName + "-NIC" 
