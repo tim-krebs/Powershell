@@ -30,6 +30,8 @@ function CreateResourceGroup{
     .PARAMETER Name
     .EXAMPLE
     CreateVM -ResourceGroupName <YourLabName> -ResourceGroupVnetName <YourResourceGroupNameHere> -LocationName <EastUS> -MSInternalAzureSubScription <d06dcc55-07b2-4b7f-9e73-830e50422235YourSubscrpHere>
+
+    # Azure DevOps Token: 2e7wkozira7abh3h6uqbofgymmypxt7v3rpryddwaps4j6hpfnrq
     #>
     param( 
         [Parameter(Mandatory=$true)]
