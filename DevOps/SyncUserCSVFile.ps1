@@ -42,7 +42,7 @@ function Sync-UsersInCsvFileToAzdo{
    # Adding or removing user to Azure DevOps
    $i = 0
    foreach($LINE in $csvdata){
-       if($ACTION[$i] -eq "ADD"){ #add muss ein string compare sein 
+       if($ACTION[$i] -eq "ADD"){
            az devops user add --email-id $EMAIL[$i] --license-type $LICENSE[$i] --org $ORAGNIZATION[$i]
            "User: $($EMAIL[$i]) with License: $($LICENSE[$i]) assigned to Organization: $($ORAGNIZATION[$i]) added to Azure." 
        }
@@ -51,8 +51,8 @@ function Sync-UsersInCsvFileToAzdo{
            "User: $($EMAIL[$i]) assigned to Organization: $($ORAGNIZATION[$i]) removed from Azure."
        }
        elseif($ACTION[$i] -eq "UPDATE"){
-           #az devops user update --license-type $LICENSE[$i] --user $EMAIL[$i] --org $ORAGNIZATION[$i]
-           az devops user update --license-type $LICENSE[$i] --user $EMAIL[$i]
+           az devops user update --license-type $LICENSE[$i] --user $EMAIL[$i] --org $ORAGNIZATION[$i]
+           #az devops user update --license-type $LICENSE[$i] --user $EMAIL[$i]
            "User: $($EMAIL[$i]) assigned to Organization: $($ORAGNIZATION[$i]) updated License to $($LICENSE[$i])." 
        }
        $i++
