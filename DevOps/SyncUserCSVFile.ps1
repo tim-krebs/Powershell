@@ -36,8 +36,6 @@ function Sync-UsersInCsvFileToAzdo{
    # Login into your Account
    'Connect to your Azure-Account...'
    az login
-   # Azure DevOps Token: 2e7wkozira7abh3h6uqbofgymmypxt7v3rpryddwaps4j6hpfnrq
-
 
    # Adding or removing user to Azure DevOps
    $i = 0
